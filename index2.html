@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXXXTASIS - Motel Premium en Aguascalientes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000000;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, #4A1C26 0%, #2d1419 50%, #1a0a0e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 7rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700 0%, #FFF4A3 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.5rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
+            50% { filter: drop-shadow(0 0 40px rgba(255, 215, 0, 1)); }
+        }
+
+        .slogan {
+            font-size: 1.8rem;
+            color: #FFF4A3;
+            font-style: italic;
+            font-weight: 300;
+            letter-spacing: 0.15rem;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 15px); }
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            color: #FFD700;
+            font-size: 3rem;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+        }
+
+        /* Suites Gallery */
+        .suites-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #000000 0%, #1a0a0e 100%);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #FFD700 0%, #FFF4A3 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4rem;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+        }
+
+        .suites-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .suite-card {
+            position: relative;
+            background: linear-gradient(135deg, #2d1419 0%, #1a0a0e 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            flex: 0 1 350px;
+        }
+
+        .suite-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #FFD700;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
+        }
+
+        .suite-image {
+            height: 300px;
+            background: linear-gradient(135deg, #4A1C26 0%, #5C2330 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .suite-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .suite-content {
+            padding: 2rem;
+        }
+
+        .suite-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .suite-description {
+            color: #d4d4d4;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .suite-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 6rem 2rem;
+            background: #000000;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #2d1419 0%, #1a0a0e 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 350px;
+            flex: 0 1 280px;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            border-color: #FFD700;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        .service-name {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-desc {
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #1a0a0e 0%, #000000 100%);
+        }
+
+        .pricing-intro {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #d4d4d4;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, #2d1419 0%, #1a0a0e 100%);
+            border-radius: 20px;
+            padding: 0;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 380px;
+            flex: 0 1 320px;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: #FFD700;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .pricing-card.highlight {
+            border: 3px solid #FFD700;
+            box-shadow: 0 10px 50px rgba(255, 215, 0, 0.4);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.highlight:hover {
+            transform: scale(1.08) translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.6);
+        }
+
+        .motel-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .pricing-content {
+            padding: 2rem;
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.05rem;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .motel-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .pricing-card.highlight .motel-name {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFF4A3 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-tag {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFF4A3;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+        .pricing-card.highlight .price-tag {
+            font-size: 2.5rem;
+            color: #FFD700;
+        }
+
+        .motel-location {
+            color: #d4d4d4;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .motel-phone {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .motel-info {
+            color: #999;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .features-list {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .feature {
+            color: #d4d4d4;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .feature::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #FFD700;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Filters */
+        .filters-container {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 2rem;
+            background: linear-gradient(135deg, #2d1419 0%, #1a0a0e 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 1rem;
+            background: #000000;
+            color: #f5f5f5;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-group select:hover,
+        .filter-group select:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            outline: none;
+        }
+
+        .reset-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .results-counter {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Mapa Interactivo */
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #2d1419 0%, #1a0a0e 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .map-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .map-wrapper {
+            background: #000000;
+            border-radius: 15px;
+            padding: 1rem;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .interactive-map {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background: #000000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #real-map {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .map-marker {
+            position: absolute;
+            transform: translate(-50%, -100%);
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            pointer-events: all;
+        }
+
+        .custom-markers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .custom-markers .map-marker {
+            pointer-events: all;
+        }
+
+        .map-marker:hover {
+            z-index: 20;
+            transform: translate(-50%, -100%) scale(1.2);
+        }
+
+        .map-marker.premium .marker-pin {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+
+        .map-marker.highlighted {
+            animation: bounce-marker 0.6s ease;
+            z-index: 30;
+        }
+
+        @keyframes bounce-marker {
+            0%, 100% { transform: translate(-50%, -100%) scale(1.2); }
+            50% { transform: translate(-50%, -120%) scale(1.4); }
+        }
+
+        .marker-pin {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #4A1C26 0%, #5C2330 100%);
+            border: 3px solid #FFD700;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            position: relative;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .marker-pin::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        .marker-label {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #FFD700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-marker:hover .marker-label,
+        .map-marker.highlighted .marker-label {
+            opacity: 1;
+        }
+
+        .city-center {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            display: none;
+        }
+
+        .city-center span {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 2px dashed rgba(255, 215, 0, 0.3);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .map-note {
+            text-align: center;
+            color: #d4d4d4;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* CTA Section */
+        .contact-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #4A1C26 0%, #2d1419 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 50%);
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFF4A3 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+        }
+
+        .contact-text {
+            font-size: 1.5rem;
+            color: #FFF4A3;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 350px;
+            flex: 0 1 280px;
+        }
+
+        .info-box:hover {
+            transform: scale(1.05);
+            border-color: #FFD700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-label {
+            color: #FFD700;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .info-value {
+            color: #f5f5f5;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a0a0e 0%, #000000 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFF4A3 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+        }
+
+        .footer-text {
+            color: #d4d4d4;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3.5rem;
+            }
+            .slogan {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .suites-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">EXXXTASIS</h1>
+            <p class="slogan">Porque algunas citas no necesitan exxxplicación</p>
+            <a href="#suites" class="cta-button">Descubre Nuestras Suites</a>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Suites Section -->
+    <section id="suites" class="suites-section">
+        <h2 class="section-title">Nuestras Suites</h2>
+        <div class="suites-grid">
+            <div class="suite-card">
+                <div class="suite-image">✨</div>
+                <div class="suite-content">
+                    <h3 class="suite-title">Suite Romántica</h3>
+                    <p class="suite-description">Diseñada para momentos íntimos y especiales. Ambiente sofisticado con detalles que enamoran.</p>
+                    <div class="suite-features">
+                        <span class="feature-tag">🛁 Jacuzzi</span>
+                        <span class="feature-tag">💡 Iluminación LED</span>
+                        <span class="feature-tag">🎵 Sistema de Audio</span>
+                        <span class="feature-tag">❄️ Clima</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="suite-card">
+                <div class="suite-image">👑</div>
+                <div class="suite-content">
+                    <h3 class="suite-title">Suite Imperial</h3>
+                    <p class="suite-description">Lujo y privacidad absoluta. Espacios amplios diseñados para la máxima comodidad y placer.</p>
+                    <div class="suite-features">
+                        <span class="feature-tag">🏰 Suite Premium</span>
+                        <span class="feature-tag">🛁 Tina de Hidromasaje</span>
+                        <span class="feature-tag">📺 Smart TV</span>
+                        <span class="feature-tag">🍾 Minibar</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="suite-card">
+                <div class="suite-image">💎</div>
+                <div class="suite-content">
+                    <h3 class="suite-title">Suite Premium VIP</h3>
+                    <p class="suite-description">La experiencia definitiva. Todo lo que imaginas y más para vivir momentos inolvidables.</p>
+                    <div class="suite-features">
+                        <span class="feature-tag">⭐ Todo Incluido</span>
+                        <span class="feature-tag">🎮 Entretenimiento</span>
+                        <span class="feature-tag">🌟 Decoración Especial</span>
+                        <span class="feature-tag">🔒 Ultra Privado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Precios Competitivos Section -->
+    <section class="pricing-section">
+        <h2 class="section-title">Encuentra Tu Motel Ideal</h2>
+        <p class="pricing-intro">Compara y descubre la mejor opción según tu presupuesto y ubicación</p>
+        
+        <!-- Filtros de búsqueda -->
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="budget-filter">💰 Presupuesto</label>
+                <select id="budget-filter" onchange="filterMotels()">
+                    <option value="all">Todos los precios</option>
+                    <option value="budget">Económico (hasta $280)</option>
+                    <option value="mid">Intermedio ($280 - $350)</option>
+                    <option value="premium">Premium ($350+)</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="location-filter">📍 Zona</label>
+                <select id="location-filter" onchange="filterMotels()">
+                    <option value="all">Todas las zonas</option>
+                    <option value="centro">Centro</option>
+                    <option value="norte">Norte (Calvillo)</option>
+                    <option value="general">Zona General</option>
+                </select>
+            </div>
+            
+            <button class="reset-btn" onclick="resetFilters()">🔄 Limpiar Filtros</button>
+        </div>
+
+        <div class="results-counter">
+            <span id="results-text">Mostrando 7 moteles</span>
+        </div>
+
+        <!-- Mapa Interactivo -->
+        <div class="map-container">
+            <h3 class="map-title">📍 Mapa Interactivo de Moteles</h3>
+            <div class="map-wrapper">
+                <div id="interactive-map" class="interactive-map">
+                    <!-- Mapa real de Google Maps -->
+                    <iframe 
+                        id="real-map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119069.02237469876!2d-102.36301982949219!3d21.88063780000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ee97cd796607%3A0x7e69d0e4e50a62f8!2sAguascalientes%2C%20Ags.!5e0!3m2!1ses!2smx!4v1698765432109!5m2!1ses!2smx&maptype=roadmap"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    
+                    <div class="map-overlay"></div>
+                    
+                    <!-- Marcadores personalizados sobre el mapa -->
+                    <div class="custom-markers">
+                        <div class="map-marker premium" data-motel="1" style="left: 50%; top: 50%;" onclick="highlightMotel(1)" title="EXXXTASIS - Centro">
+                            <div class="marker-pin"></div>
+                            <div class="marker-label">EXXXTASIS</div>
+                        </div>
+                        <div class="map-marker" data-motel="2" style="left: 48%; top: 45%;" onclick="highlightMotel(2)" title="Motel Los Arcos">
+                            <div class="marker-pin"></div>
+                            <div class="marker-label">Los Arcos</div>
+                        </div>
+                        <div class="map-marker" data-motel="3" style="left: 55%; top: 52%;" onclick="highlightMotel(3)" title="Motel La Cabaña">
+                            <div class="marker-pin"></div>
+                            <div class="marker-label">La Cabaña</div>
+                        </div>
+                        <div class="map-marker" data-motel="4" style="left: 46%; top: 55%;" onclick="highlightMotel(4)" title="Motel Moa">
+                            <div class="marker-pin"></div>
+                            <div class="marker-label">Moa</div>
+                        </div>
+                        <div class="map-marker" data-motel="5" style="left: 53%; top: 48%;" onclick="highlightMotel(5)" title="Motel Castillo">
+                            <div class="marker-pin"></div>
+                            <div class="marker-label">Castillo</div>
+                        </div>
+                        <div class="map-marker" data-motel="6" style="left: 51%; top: 54%;" onclick="highlightMotel(6)" title="Motel Real">
+                            <div class="marker-pin"></div>
+                            <div class="marker-label">Real</div>
+                        </div>
+                        <div class="map-marker" data-motel="7" style="left: 35%; top: 35%;" onclick="highlightMotel(7)" title="Motel Grand - Salida a Calvillo">
+                            <div class="marker-pin"></div>
+                            <div class="marker-label">Grand</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="map-note">💡 Haz clic en los marcadores para ver detalles del motel</p>
+        </div>
+
+        <div class="pricing-grid" id="motels-grid">
+            <div class="pricing-card highlight">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=600&fit=crop" alt="EXXXTASIS Suite Premium" class="motel-image">
+                <div class="pricing-content">
+                    <div class="ribbon">TU MEJOR OPCIÓN</div>
+                    <h3 class="motel-name">EXXXTASIS</h3>
+                    <div class="price-tag">Desde $350</div>
+                    <div class="motel-location">📍 Aguascalientes Centro</div>
+                    <div class="motel-phone">📞 Disponible 24/7</div>
+                    <div class="features-list">
+                        <div class="feature">✓ Suites Premium</div>
+                        <div class="feature">✓ Jacuzzi & Hidromasaje</div>
+                        <div class="feature">✓ Room Service 24/7</div>
+                        <div class="feature">✓ Privacidad Total</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop" alt="Motel Los Arcos" class="motel-image">
+                <div class="pricing-content">
+                    <h3 class="motel-name">Motel Los Arcos</h3>
+                    <div class="price-tag">Desde $400</div>
+                    <div class="motel-location">📍 Aguascalientes</div>
+                    <div class="motel-info">Información disponible por teléfono</div>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop" alt="Motel La Cabaña" class="motel-image">
+                <div class="pricing-content">
+                    <h3 class="motel-name">Motel La Cabaña</h3>
+                    <div class="price-tag">Desde $350</div>
+                    <div class="motel-location">📍 Aguascalientes</div>
+                    <div class="motel-info">Estilo rústico y acogedor</div>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=600&fit=crop" alt="Motel Moa" class="motel-image">
+                <div class="pricing-content">
+                    <h3 class="motel-name">Motel Moa</h3>
+                    <div class="price-tag">Desde $300</div>
+                    <div class="motel-location">📍 Aguascalientes</div>
+                    <div class="motel-info">Opción económica y funcional</div>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <img src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800&h=600&fit=crop" alt="Motel Castillo" class="motel-image">
+                <div class="pricing-content">
+                    <h3 class="motel-name">Motel Castillo</h3>
+                    <div class="price-tag">Desde $280</div>
+                    <div class="motel-location">📍 Aguascalientes</div>
+                    <div class="motel-info">Ambiente clásico y sencillo</div>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop" alt="Motel Real" class="motel-image">
+                <div class="pricing-content">
+                    <h3 class="motel-name">Motel Real</h3>
+                    <div class="price-tag">Desde $250</div>
+                    <div class="motel-location">📍 Aguascalientes</div>
+                    <div class="motel-info">Opción más económica</div>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop" alt="Motel Grand" class="motel-image">
+                <div class="pricing-content">
+                    <h3 class="motel-name">Motel Grand</h3>
+                    <div class="price-tag">Consultar</div>
+                    <div class="motel-location">📍 Blvd. Ruiz Cortínez km 5.3</div>
+                    <div class="motel-info">Salida a Calvillo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2 class="section-title">Servicios Exclusivos</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="service-icon">🔒</div>
+                <h3 class="service-name">Privacidad Total</h3>
+                <p class="service-desc">Acceso privado y discreto a cada suite. Tu intimidad es nuestra prioridad.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">🍽️</div>
+                <h3 class="service-name">Room Service 24/7</h3>
+                <p class="service-desc">Menú gourmet disponible a cualquier hora. Calidad premium directo a tu habitación.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">🎵</div>
+                <h3 class="service-name">Ambiente Musical</h3>
+                <p class="service-desc">Sistema de audio premium con control personalizado para crear el ambiente perfecto.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">🚗</div>
+                <h3 class="service-name">Estacionamiento Privado</h3>
+                <p class="service-desc">Cochera privada para cada suite. Entrada y salida completamente discreta.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">💳</div>
+                <h3 class="service-name">Pagos Discretos</h3>
+                <p class="service-desc">Múltiples formas de pago con total confidencialidad. Efectivo y tarjetas aceptadas.</p>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">🧼</div>
+                <h3 class="service-name">Limpieza Impecable</h3>
+                <p class="service-desc">Suites sanitizadas y preparadas con los más altos estándares de higiene.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-content">
+            <h2 class="contact-title">Reserva Tu Experiencia</h2>
+            <p class="contact-text">Vive momentos únicos en el corazón de Aguascalientes</p>
+            <a href="tel:+524491234567" class="cta-button">Llama Ahora</a>
+            
+            <div class="contact-info">
+                <div class="info-box">
+                    <div class="info-icon">📍</div>
+                    <div class="info-label">Ubicación</div>
+                    <div class="info-value">Aguascalientes, México<br>Zona Céntrica</div>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-icon">📞</div>
+                    <div class="info-label">Reservaciones</div>
+                    <div class="info-value">Disponible 24/7<br>Atención Inmediata</div>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-icon">🕐</div>
+                    <div class="info-label">Horario</div>
+                    <div class="info-value">Abierto 24 Horas<br>Todos los Días</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">EXXXTASIS</div>
+        <p class="footer-text">Motel Premium - Aguascalientes</p>
+        <p class="footer-text" style="margin-top: 0.5rem; font-style: italic; opacity: 0.8;">
+            Porque algunas citas no necesitan exxxplicación
+        </p>
+    </footer>
+
+    <script>
+        // Base de datos de moteles
+        const motelesData = [
+            {
+                id: 1,
+                nombre: 'EXXXTASIS',
+                precio: 350,
+                precioTexto: 'Desde $350',
+                ubicacion: 'Aguascalientes Centro',
+                zona: 'centro',
+                telefono: '📞 Disponible 24/7',
+                imagen: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=600&fit=crop',
+                destacado: true,
+                features: [
+                    '✓ Suites Premium',
+                    '✓ Jacuzzi & Hidromasaje',
+                    '✓ Room Service 24/7',
+                    '✓ Privacidad Total'
+                ]
+            },
+            {
+                id: 2,
+                nombre: 'Motel Los Arcos',
+                precio: 400,
+                precioTexto: 'Desde $400',
+                ubicacion: 'Aguascalientes',
+                zona: 'general',
+                info: 'Información disponible por teléfono',
+                imagen: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop'
+            },
+            {
+                id: 3,
+                nombre: 'Motel La Cabaña',
+                precio: 350,
+                precioTexto: 'Desde $350',
+                ubicacion: 'Aguascalientes',
+                zona: 'general',
+                info: 'Estilo rústico y acogedor',
+                imagen: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop'
+            },
+            {
+                id: 4,
+                nombre: 'Motel Moa',
+                precio: 300,
+                precioTexto: 'Desde $300',
+                ubicacion: 'Aguascalientes',
+                zona: 'general',
+                info: 'Opción económica y funcional',
+                imagen: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=600&fit=crop'
+            },
+            {
+                id: 5,
+                nombre: 'Motel Castillo',
+                precio: 280,
+                precioTexto: 'Desde $280',
+                ubicacion: 'Aguascalientes',
+                zona: 'general',
+                info: 'Ambiente clásico y sencillo',
+                imagen: 'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800&h=600&fit=crop'
+            },
+            {
+                id: 6,
+                nombre: 'Motel Real',
+                precio: 250,
+                precioTexto: 'Desde $250',
+                ubicacion: 'Aguascalientes',
+                zona: 'general',
+                info: 'Opción más económica',
+                imagen: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop'
+            },
+            {
+                id: 7,
+                nombre: 'Motel Grand',
+                precio: 0,
+                precioTexto: 'Consultar',
+                ubicacion: 'Blvd. Ruiz Cortínez km 5.3',
+                zona: 'norte',
+                info: 'Salida a Calvillo',
+                imagen: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop'
+            }
+        ];
+
+        // Renderizar moteles
+        function renderMoteles(moteles) {
+            const grid = document.getElementById('motels-grid');
+            grid.innerHTML = '';
+
+            moteles.forEach(motel => {
+                const card = document.createElement('div');
+                card.className = `pricing-card ${motel.destacado ? 'highlight' : ''}`;
+                card.setAttribute('data-precio', motel.precio);
+                card.setAttribute('data-zona', motel.zona);
+
+                let contentHTML = `
+                    <img src="${motel.imagen}" alt="${motel.nombre}" class="motel-image">
+                    <div class="pricing-content">
+                        ${motel.destacado ? '<div class="ribbon">TU MEJOR OPCIÓN</div>' : ''}
+                        <h3 class="motel-name">${motel.nombre}</h3>
+                        <div class="price-tag">${motel.precioTexto}</div>
+                        <div class="motel-location">📍 ${motel.ubicacion}</div>
+                `;
+
+                if (motel.telefono) {
+                    contentHTML += `<div class="motel-phone">${motel.telefono}</div>`;
+                }
+
+                if (motel.info) {
+                    contentHTML += `<div class="motel-info">${motel.info}</div>`;
+                }
+
+                if (motel.features) {
+                    contentHTML += '<div class="features-list">';
+                    motel.features.forEach(feature => {
+                        contentHTML += `<div class="feature">${feature}</div>`;
+                    });
+                    contentHTML += '</div>';
+                }
+
+                contentHTML += '</div>';
+                card.innerHTML = contentHTML;
+                grid.appendChild(card);
+            });
+
+            updateResultsCounter(moteles.length);
+        }
+
+        // Filtrar moteles
+        function filterMotels() {
+            const budgetFilter = document.getElementById('budget-filter').value;
+            const locationFilter = document.getElementById('location-filter').value;
+
+            let filtered = motelesData.filter(motel => {
+                let matchBudget = true;
+                let matchLocation = true;
+
+                // Filtro de presupuesto
+                if (budgetFilter !== 'all') {
+                    if (budgetFilter === 'budget') {
+                        matchBudget = motel.precio > 0 && motel.precio <= 280;
+                    } else if (budgetFilter === 'mid') {
+                        matchBudget = motel.precio > 280 && motel.precio <= 350;
+                    } else if (budgetFilter === 'premium') {
+                        matchBudget = motel.precio > 350 || motel.precio === 0;
+                    }
+                }
+
+                // Filtro de ubicación
+                if (locationFilter !== 'all') {
+                    matchLocation = motel.zona === locationFilter;
+                }
+
+                return matchBudget && matchLocation;
+            });
+
+            renderMoteles(filtered);
+        }
+
+        // Resetear filtros
+        function resetFilters() {
+            document.getElementById('budget-filter').value = 'all';
+            document.getElementById('location-filter').value = 'all';
+            renderMoteles(motelesData);
+        }
+
+        // Actualizar contador de resultados
+        function updateResultsCounter(count) {
+            const text = count === 1 ? 'motel encontrado' : 'moteles encontrados';
+            document.getElementById('results-text').textContent = `Mostrando ${count} ${text}`;
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMoteles(motelesData);
+        });
+
+        // Función para resaltar motel en el mapa y en las tarjetas
+        function highlightMotel(motelId) {
+            // Remover highlights previos
+            document.querySelectorAll('.map-marker').forEach(marker => {
+                marker.classList.remove('highlighted');
+            });
+            document.querySelectorAll('.pricing-card').forEach(card => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+
+            // Agregar highlight al marcador
+            const marker = document.querySelector(`.map-marker[data-motel="${motelId}"]`);
+            if (marker) {
+                marker.classList.add('highlighted');
+            }
+
+            // Encontrar y resaltar la tarjeta correspondiente
+            const motel = motelesData.find(m => m.id === motelId);
+            if (motel) {
+                // Scroll a la sección de tarjetas
+                const grid = document.getElementById('motels-grid');
+                const cards = grid.querySelectorAll('.pricing-card');
+                
+                cards.forEach((card, index) => {
+                    if (motelesData[index] && motelesData[index].id === motelId) {
+                        // Scroll suave a la tarjeta
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Efecto de highlight
+                        setTimeout(() => {
+                            card.style.transform = 'scale(1.05)';
+                            card.style.boxShadow = '0 20px 60px rgba(255, 215, 0, 0.6)';
+                            card.style.border = '3px solid #FFD700';
+                            
+                            // Remover highlight después de 2 segundos
+                            setTimeout(() => {
+                                card.style.transform = '';
+                                card.style.boxShadow = '';
+                                card.style.border = '';
+                            }, 2000);
+                        }, 300);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
