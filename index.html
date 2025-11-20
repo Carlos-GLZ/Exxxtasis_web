@@ -679,16 +679,32 @@
             <h2 style="color: var(--primary-neon); text-align: center; margin-bottom: 1.5rem;">Reservar Suite</h2>
             <form onsubmit="handleReservation(event)">
                 <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" class="custom-input" required>
+                    <label for="res-motel">Motel</label>
+                    <select id="res-motel" class="custom-select" required>
+                        <option value="">Selecciona un motel...</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label>Fecha</label>
-                    <input type="date" class="custom-input" required>
+                    <label for="res-name">Tu Nombre</label>
+                    <input type="text" id="res-name" class="custom-input" required>
                 </div>
                 <div class="form-group">
-                    <label>Comentarios Adicionales</label>
-                    <textarea class="custom-input" rows="3" placeholder="Ej: ¿Podrían decorar la habitación con pétalos de rosa?"></textarea>
+                    <label for="res-phone">Tu WhatsApp</label>
+                    <input type="tel" id="res-phone" class="custom-input" required placeholder="Ej. 4491234567">
+                </div>
+                <div class="form-group" style="display: flex; gap: 1rem;">
+                    <div style="flex: 1;">
+                        <label for="res-date">Fecha</label>
+                        <input type="date" id="res-date" class="custom-input" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="res-time">Hora de Llegada</label>
+                        <input type="time" id="res-time" class="custom-input" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="res-comments">Comentarios Adicionales</label>
+                    <textarea id="res-comments" class="custom-input" rows="3" placeholder="Ej: ¿Podrían decorar la habitación con pétalos de rosa?"></textarea>
                 </div>
                 <button type="submit" class="card-btn">Confirmar por WhatsApp</button>
             </form>
@@ -848,7 +864,6 @@
                 lng: -102.23628
             }
         ];
-//Renderizado de Moteles
         function renderMoteles(data) {
             const grid = document.getElementById('motels-grid');
             grid.innerHTML = '';
@@ -861,7 +876,6 @@
                 card.innerHTML = `
                     <div class="card-image-wrapper">
                         ${motel.destacado ? '<div class="card-badge">Destacado</div>' : ''}
-                        <div class="rating-tag">★ ${motel.rating}</div>
                         <img src="${motel.imagen}" alt="${motel.nombre}" class="motel-image">
                     </div>
                     <div class="pricing-content">
@@ -870,10 +884,9 @@
                         <div class="tags-container">${featuresHTML}</div>
                         <div class="price-row">
                             <div>
-                                <div class="price-tag">$${motel.precio}</div>
-                                <span style="color:#666; font-size:0.8rem">/hora</span>
+                                <div class="price-tag">${motel.precioTexto}</div>
                             </div>
-                            <button class="card-btn" style="width: auto; padding: 0.6rem 1.5rem;" onclick="openReservationModal()">Reservar</button>
+                            <button class="card-btn" style="width: auto; padding: 0.6rem 1.5rem;" onclick="openReservationModal(${motel.id})">Reservar</button>
                         </div>
                     </div>
                 `;
@@ -894,14 +907,45 @@
             renderMoteles(filtered);
         }
 
-        // Modal Functions
-        function openReservationModal() { document.getElementById('reservationModal').style.display = 'flex'; }
-        function closeReservationModal() { document.getElementById('reservationModal').style.display = 'none'; }
+        function openReservationModal(motelId = null) {
+            const motelSelect = document.getElementById('res-motel');
+            if (motelId) {
+                motelSelect.value = motelId;
+            }
+            document.getElementById('reservationModal').style.display = 'flex';
+        }
+
+        function closeReservationModal() { 
+            document.getElementById('reservationModal').style.display = 'none'; 
+        }
+
         function handleReservation(e) {
             e.preventDefault();
+            
+            const motelId = document.getElementById('res-motel').value;
+            const motel = motelesData.find(m => m.id == motelId);
+            const name = document.getElementById('res-name').value;
+            const phone = document.getElementById('res-phone').value;
+            const date = document.getElementById('res-date').value;
+            const time = document.getElementById('res-time').value;
+            const comments = document.getElementById('res-comments').value;
+
+            const message = `¡Hola! Quiero reservar en ${motel.nombre}.\n\n` +
+                          `*Nombre:* ${name}\n` +
+                          `*Fecha:* ${date}\n` +
+                          `*Hora de llegada:* ${time}\n` +
+                          `${comments ? `*Comentarios:* ${comments}\n` : ''}\n` +
+                          `¡Gracias!`;
+
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${motel.telefono.replace(/\D/g, '')}&text=${encodeURIComponent(message)}`;
+
+            // For demonstration, we'll alert the URL. In a real scenario, you'd redirect.
             alert('Redirigiendo a WhatsApp para completar tu reserva...');
+            window.open(whatsappUrl, '_blank');
+            
             closeReservationModal();
         }
+
         window.onclick = function(e) {
             if(e.target == document.getElementById('reservationModal')) closeReservationModal();
         }
@@ -933,10 +977,21 @@
             });
         }
 
+        function populateMotelSelector() {
+            const select = document.getElementById('res-motel');
+            motelesData.forEach(motel => {
+                const option = document.createElement('option');
+                option.value = motel.id;
+                option.textContent = motel.nombre;
+                select.appendChild(option);
+            });
+        }
+
         // Init
         document.addEventListener('DOMContentLoaded', () => {
             renderMoteles(motelesData);
             initLeafletMap(); // Iniciar mapa gratuito
+            populateMotelSelector();
         });
     </script>
 </body>
