@@ -687,8 +687,8 @@
                     <input type="date" class="custom-input" required>
                 </div>
                 <div class="form-group">
-                    <label>Hora</label>
-                    <input type="time" class="custom-input" required>
+                    <label>Comentarios Adicionales</label>
+                    <textarea class="custom-input" rows="3" placeholder="Ej: ¿Podrían decorar la habitación con pétalos de rosa?"></textarea>
                 </div>
                 <button type="submit" class="card-btn">Confirmar por WhatsApp</button>
             </form>
@@ -873,7 +873,7 @@
                                 <div class="price-tag">$${motel.precio}</div>
                                 <span style="color:#666; font-size:0.8rem">/hora</span>
                             </div>
-                            <button class="card-btn" style="width: auto; padding: 0.6rem 1.5rem;" onclick="openReservationModal()">Reservar</button>
+                            <button class="card-btn" style="width: auto; padding: 0.6rem 1.5rem;" onclick="openReservationModal('${motel.nombre}')">Reservar</button>
                         </div>
                     </div>
                 `;
@@ -895,13 +895,40 @@
         }
 
         // Modal Functions
-        function openReservationModal() { document.getElementById('reservationModal').style.display = 'flex'; }
+        function openReservationModal(motelName = 'una suite') {
+            document.getElementById('reservationModal').style.display = 'flex';
+            // Opcional: Personalizar el título del modal
+            document.querySelector('#reservationModal h2').innerText = `Reservar en ${motelName}`;
+        }
         function closeReservationModal() { document.getElementById('reservationModal').style.display = 'none'; }
+        
         function handleReservation(e) {
             e.preventDefault();
-            alert('Redirigiendo a WhatsApp para completar tu reserva...');
+            const form = e.target;
+            const nombre = form.querySelector('input[type="text"]').value;
+            const fecha = form.querySelector('input[type="date"]').value;
+            const hora = form.querySelector('input[type="time"]').value;
+            const comentarios = form.querySelector('textarea').value;
+            const motel = document.querySelector('#reservationModal h2').innerText.replace('Reservar en ', '');
+
+            const numeroWhatsApp = '5214491234567'; // Reemplaza con tu número
+
+            let mensaje = `¡Hola! Quiero reservar en ${motel}.\n\n`;
+            mensaje += `*Nombre:* ${nombre}\n`;
+            mensaje += `*Fecha:* ${fecha}\n`;
+            mensaje += `*Hora:* ${hora}\n`;
+            if (comentarios) {
+                mensaje += `*Comentarios:* ${comentarios}\n`;
+            }
+            mensaje += `\n¡Gracias!`;
+
+            const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensaje)}`;
+            
+            window.open(url, '_blank');
+            
             closeReservationModal();
         }
+
         window.onclick = function(e) {
             if(e.target == document.getElementById('reservationModal')) closeReservationModal();
         }
@@ -928,7 +955,7 @@
                 if(motel.lat && motel.lng) {
                     L.marker([motel.lat, motel.lng])
                         .addTo(map)
-                        .bindPopup(`<b>${motel.nombre}</b><br>${motel.precio}`);
+                        .bindPopup(`<b>${motel.nombre}</b><br>$${motel.precio}`);
                 }
             });
         }
