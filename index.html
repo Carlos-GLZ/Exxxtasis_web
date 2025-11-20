@@ -702,59 +702,143 @@
         const motelesData = [
             {
                 id: 1,
-                nombre: 'Suite Romance Deluxe',
-                precio: '$350',
-                numPrecio: 350,
-                ubicacion: 'Zona Centro',
-                zona: 'centro',
-                imagen: 'https://images.unsplash.com/photo-1621293954908-351524b951c5?w=800&h=600&fit=crop',
+                nombre: 'Motel Castillo',
+                precio: 280,
+                precioTexto: 'Desde $280',
+                ubicacion: 'Blvd. Lic. Adolfo Ruiz Cortines 921, Francisco Villa, 20218 Aguascalientes, Ags., México',
+                zona: '',
+                telefono: '📞 Disponible 24/7',
+                imagen: 'https://th.bing.com/th/id/R.13e4cc802b2d95b92fa4ce89ebc88d97?rik=D7%2biel9nVk2gdw&riu=http%3a%2f%2fwww.hospedarme.com.mx%2fwp-content%2fuploads%2f2018%2f10%2fmotel-castillo.jpg&ehk=T2MITzu%2bbxjRuinPzXegSgmRFRL63Rp12XTJBUPTUz0%3d&risl=&pid=ImgRaw&r=0',
                 destacado: true,
-                rating: 4.8,
-                features: ['Jacuzzi', 'Sky Bar', 'Wi-Fi'],
-                lat: 21.8853,
-                lng: -102.2916
+                features: [
+                    '✓ Vapor',
+                    '✓ Jacuzzi & Hidromasaje',
+                    '✓ Ambientes Temáticos',
+                    '✓ Privacidad Total'
+                ],
+                lat: 21.872291,
+                lng: -102.327774
             },
             {
                 id: 2,
-                nombre: 'Pasión y Confort',
-                precio: '$420',
-                numPrecio: 420,
-                ubicacion: 'Zona Norte',
+                nombre: 'Motel Los Arcos',
+                precio: 400,
+                precioTexto: 'Desde $400',
+                ubicacion: 'Aguascalientes',
                 zona: 'norte',
-                imagen: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop',
-                destacado: false,
-                rating: 4.9,
-                features: ['Tina Hidro', 'Espejo', 'Netflix'],
-                lat: 21.9111,
-                lng: -102.315
+                telefono: '📞 449 973 1118',
+                imagen: 'https://motelesmexico.com.mx/wp-content/uploads/2023/05/Motel-Los-Arcos-en-Aguascalientes-Ags.-2.jpg',
+                features: [
+                    '✓ Aire acondicionado y calefacción',
+                    '✓ Cama King size.',
+                    '✓ Televisor.',
+                    '✓ Música',
+                    '✓ Conexión de internet inalámbrico'
+                ],
+                lat: 21.943944101443112,
+                lng: -102.29104183225077
             },
             {
                 id: 3,
-                nombre: 'Love Paradise',
-                precio: '$380',
-                numPrecio: 380,
-                ubicacion: 'Zona Sur',
-                zona: 'general',
-                imagen: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&h=600&fit=crop',
-                destacado: false,
-                rating: 4.7,
-                features: ['Cama King', 'Luces LED'],
-                lat: 21.8584,
-                lng: -102.2835
+                nombre: 'Motel EKXA',
+                precio: 450,
+                precioTexto: 'Desde $450',
+                ubicacion: 'Blvd. A Zacatecas 316, Desarrollo Especial Bulevar a Zacatecas, 20123 Aguascalientes, Ags., México',
+                zona: 'Norte',
+                telefono: '📞 449 388 0667',
+                info: 'Instalaciones del motel EKXA son elegantes y confortables. Las habitaciones tienen un estilo moderno y acogedor',
+                imagen: 'https://motelesmexico.com.mx/wp-content/uploads/2023/05/Motel-EKXA-en-Aguascalientes-Ags.-4.jpg',
+                features: [
+                    'Habitación Torre: $450 pesos por 6 horas',
+                    'Suite Estándar: consultar precio',
+                    'Con jacuzzi: consultar precio',
+                    'Con alberca: consultar precio'
+                ],
+                lat: 21.931399380682137,
+                lng: -102.2906894340993
             },
             {
                 id: 4,
-                nombre: 'Motel Moa',
-                precio: '$300',
-                numPrecio: 300,
-                ubicacion: 'Salida a México',
+                nombre: 'Motel Rapid Inn',
+                precio: 350,
+                precioTexto: 'Desde $350',
+                ubicacion: 'Av. de la Convención de 1914 Nte. 308, Morelos, 20140 Aguascalientes, Ags., México',
                 zona: 'general',
-                imagen: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&h=600&fit=crop',
-                destacado: false,
-                rating: 4.5,
-                features: ['Económico', 'Privado'],
-                lat: 21.845,
-                lng: -102.264
+                info: 'Opción económica y funcional',
+                imagen: 'https://motelesmexico.com.mx/wp-content/uploads/2023/05/Motel-Rapid-Inn-en-Aguascalientes-Ags.-1.jpg',
+                features: [
+                    'Habitación Estandar: $350',
+                    'Con Jacuzzi $650'
+                ],
+                lat: 21.90161536047889,
+                lng: -102.29079491690983
+            },
+            {
+                id: 5,
+                nombre: 'Motel Castillo',
+                precio: 280,
+                precioTexto: 'Desde $280',
+                ubicacion: 'Aguascalientes',
+                zona: 'general',
+                info: 'Ambiente clásico y sencillo',
+                imagen: 'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800&h=600&fit=crop',
+                lat: 21.872291,
+                lng: -102.327774
+            },
+            {
+                id: 6,
+                nombre: 'Aruma Motel',
+                precio: 300,
+                precioTexto: 'Desde $300',
+                ubicacion: 'Aguascalientes',
+                zona: 'Centro',
+                info: 'Precios desde $300 pesos',
+                telefono: '📞 449 506 9754',
+                imagen: 'https://tse4.mm.bing.net/th/id/OIP.U1LspiiAs_397GuonyZ9HQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
+                features: [
+                    'Habitación Sencilla: $300 por 6 horas',
+                    'Habitación con Jacuzzi: $900'
+                ],
+                lat: 21.867708932927126,
+                lng: -102.28155884389783
+            },
+            {
+                id: 7,
+                nombre: 'Motel As Feixas',
+                precio: 300,
+                precioTexto: 'Desde $300',
+                ubicacion: 'Blvd. José María Chávez 2310, Rústicos Calpulli, 20296 Aguascalientes, Ags., México',
+                zona: 'sur',
+                info: 'Salida a Calvillo',
+                telefono: '📞 449 971 1395',
+                imagen: 'https://motelesmexico.com.mx/wp-content/uploads/2023/05/Motel-As-Feixas-Ags-en-Aguascalientes-Ags.-1.jpg',
+                features: [
+                    'Habitación Sencilla: $300',
+                    'Habitación con Jacuzzi: $350',
+                    'Pool Dance $500',
+                    'Con alberca: $1,200'
+                ],
+                lat: 21.830534452899897,
+                lng: -102.28715554759519
+            },
+            {
+                id: 8,
+                nombre: 'Motel Pedra',
+                precio: 370,
+                precioTexto: 'Desde $370',
+                ubicacion: 'Av Tecnológico 902, 20263 Municipio de Aguascalientes, Aguascalientes ',
+                zona: 'norte',
+                info: 'Salida a Calvillo',
+                telefono: '📞 449 974 2929',
+                imagen: 'https://motelesmexico.com.mx/wp-content/uploads/2023/05/Motel-Pedra-en-Aguascalientes-Ags.-4.jpg',
+                features: [
+                    'Habitación Estandar: $370',
+                    'Habitación Jacuzzi: $650',
+                    'Habitación alberca y Jacuzzi: $1,200',
+                    'Master Suite doble alberca y jacuzzi: $1,600'
+                ],
+                lat: 21.86466,
+                lng: -102.23628
             }
         ];
 
